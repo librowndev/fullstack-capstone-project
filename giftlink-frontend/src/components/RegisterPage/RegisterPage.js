@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-
+// Step 1 - Task 1
+import { urlConfig } from '../../config';
+// Step 1 - Task 2
+import { useAppContext } from '../../context/AuthContext';
+// Step 1 - Task 3
+import { useNavigate } from 'react-router-dom';
 import './RegisterPage.css';
 
 function RegisterPage() {
@@ -9,8 +14,41 @@ function RegisterPage() {
     const [password, setPassword] = useState('');
 
     const handleRegister = async () => {
-        console.log("Register invoked")
-    }
+        const response = await fetch(`${urlConfig.backendUrl}/api/auth/register`, {
+            // Step 1 - Task 6
+            method: 'POST',
+            // Step 1 - Task 7
+            headers: {
+                'content-type': 'application/json',
+            },
+            // Step 1 - Task 8
+            body: JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password,
+            }),
+        });
+
+        // Step 2 - Task 1
+        const json = await response.json();
+
+        // Step 2 - Task 2
+        if (json.authtoken) {
+            sessionStorage.setItem('auth-token', json.authtoken);
+            sessionStorage.setItem('name', firstName);
+            sessionStorage.setItem('email', json.email);
+            // Step 2 - Task 3
+            setIsLoggedIn(true);
+            // Step 2 - Task 4
+            navigate('/app');
+        }
+
+        // Step 2 - Task 5
+        if (json.error) {
+            setShowerr(json.error);
+        }
+    };
 
     return (
         <div className="container mt-5">
