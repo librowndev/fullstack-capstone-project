@@ -5,20 +5,20 @@
 Open **separate PowerShell terminals** for each service.
 
 ### 1. Backend
-cd C:\Users\librown\WebstormProjects\fullstack-capstone-project\giftlink-backend
+cd  \fullstack-capstone-project\giftlink-backend
 
 npm install
 
 npm run dev
 
 ### 2. Frontend
-cd C:\Users\librown\WebstormProjects\fullstack-capstone-project\giftlink-frontend
+cd  \fullstack-capstone-project\giftlink-frontend
 npm install
 
 npm start
 
 ### 3. Sentiment Analysis
-cd C:\Users\librown\WebstormProjects\fullstack-capstone-project\sentiment
+cd  \fullstack-capstone-project\sentiment
 npm install
 
 node index.js
@@ -26,7 +26,7 @@ node index.js
 
 ## Important
 Run `npm install` **inside each subfolder**, not from:
-C:\Users\librown\WebstormProjects\fullstack-capstone-project
+C:\fullstack-capstone-project
 
 ## Terminal 1
 cd giftlink-backend
